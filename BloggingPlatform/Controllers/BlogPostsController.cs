@@ -16,11 +16,17 @@ namespace BloggingPlatform.Controllers
         [HttpGet(Name = "/api/posts")]
         public IActionResult Get()
         {
+            _logger.LogInformation("{api/posts/Get} starting.");
+            // get list of BlogPosts
+            _logger.LogInformation("{api/posts/Get} end.");
             return Ok();
         }
         [HttpPost(Name = "/api/posts")]
         public IActionResult Post()
         {
+            _logger.LogInformation("{api/posts} starting.");
+            // create BlogPost
+            _logger.LogInformation("{api/posts} end.");
             return Created();
         }
     }
