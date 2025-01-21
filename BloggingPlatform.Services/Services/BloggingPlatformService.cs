@@ -1,31 +1,49 @@
 ﻿
-namespace BloggingPlatform.Services.Services
+using BloggingPlatform.Infrasctructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+namespace BloggingPlatform.Services
 {
     public class BloggingPlatformService : IBloggingPlatformService
     {
-        public bool Delete(int codVenda)
+        private readonly IBloggingPlatformRepository _bloggingPlatformRepository;
+
+        public BloggingPlatformService(IBloggingPlatformRepository bloggingPlatformRepository)
+        {
+            _bloggingPlatformRepository = bloggingPlatformRepository;
+        }
+        public bool Delete(int cod)
         {
             throw new NotImplementedException();
         }
 
         public BlogPost GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var blogPost = _bloggingPlatformRepository.GetById(id);
+            if (blogPost == null)
+                throw new Exception("BlogPost not found.");
+
+            return blogPost;
         }
 
         public List<BlogPost> List()
         {
-            throw new NotImplementedException();
+            return _bloggingPlatformRepository.List();
         }
 
         public void Save(BlogPost BlogPostVM)
         {
-            throw new NotImplementedException();
+            _bloggingPlatformRepository.Save(BlogPostVM);
         }
 
-        public bool Update(int codVenda)
+        public void SaveComment(Comment comment)
         {
-            throw new NotImplementedException();
+            _bloggingPlatformRepository.SaveComment(comment);
+        }
+
+        public void Update(BlogPost blogPost)
+        {
+            _bloggingPlatformRepository.Update(blogPost);
         }
     }
 }

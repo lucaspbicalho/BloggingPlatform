@@ -1,6 +1,12 @@
-﻿namespace BloggingPlatform.Services
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BloggingPlatform.Infrasctructure.Repositories
 {
-    public interface IBloggingPlatformService
+    public interface IBloggingPlatformRepository
     {
         public List<BlogPost> List();
         public BlogPost GetById(Guid id);
